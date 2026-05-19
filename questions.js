@@ -1,53 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>MUJ Purity Test</title>
-
-  <link rel="stylesheet" href="style.css">
-  
-</head>
-
-<body>
-
-  <div class="container">
-
-    <h1>💀 MUJ Purity Test 💀</h1>
-
-    <p class="description">
-      Start with a score of 50.<br>
-      Subtract 1 point for everything you’ve done.<br><br>
-
-      The lower your score, the more chaotic your MUJ life has been.
-    </p>
-
-    <div class="warning">
-      ⚠️ This test is just for fun. Don’t take the results too seriously.
-    </div>
-
-    <!-- Questions -->
-    <div id="questions"></div>
-
-    <!-- Button -->
-    <button id="submitBtn">
-      Calculate My Score
-    </button>
-
-    <!-- Result -->
-    <div id="result"></div>
-
-    <footer>
-      Made with chaos during college life.
-    </footer>
-
-  </div>
-
-  <script src="questions.js"></script>
-  <script src="script.js"></script>
-
-</body>
-
-</html>
+const questions = [
+  "Had an alcoholic drink?",
+  "Smoked a cigarette, cigar, or pipe?",
+  "Used tobacco?",
+  "Used marijuana?",
+  "Used illegal drugs?",
+  "Been arrested?",
+  "Seen a pornographic movie?",
+  "Read pornographic literature?",
+  "Watched someone having intercourse intentionally?",
+  "Discussed masturbation with someone?",
+  "Had a wet dream?",
+  "Masturbated?",
+  "Masturbated in the last three months?",
+  "Masturbated at least once a week for the last three months?",
+  "Masturbated at least once a day for the last three months?",
+  "Reached a sexual climax?",
+  "French kissed someone?",
+  "Kissed someone on the neck?",
+  "Seen a completely nude person?",
+  "Been seen completely nude by someone?",
+  "Been completely undressed by someone?",
+  "Had someone completely undress you?",
+  "Undressed someone completely?",
+  "Told someone 'I love you' when you didn’t mean it?",
+  "Lied to break a date?",
+  "Had two dates on the same night with different people?",
+  "Made out with two people on the same night?",
+  "Used a dating app while already in a relationship?",
+  "Purchased contraceptives?",
+  "Played a game involving stripping?",
+  "Had a homosexual experience?",
+  "Fondled someone’s bare genitals?",
+  "Had your bare genitals fondled?",
+  "Performed oral sex?",
+  "Received oral sex?",
+  "Had sexual intercourse?",
+  "Had sexual intercourse in the last three months?",
+  "Had sexual intercourse without a condom?",
+  "Had sexual intercourse more than three times in one night?",
+  "Had sexual intercourse with more than one person on the same night?",
+  "Had sexual intercourse with more than one person (not necessarily on the same night)?",
+  "Had sexual intercourse with more than five people?",
+  "Had sex on a college campus?",
+  "Had sex in a hostel?",
+  "Physically involved with a professor?",
+  "Been photographed or filmed during sexual intercourse?",
+  "Attended an orgy?",
+  "Impregnated someone or been impregnated?",
+  "Taken money for sexual intercourse?",
+  "Committed incest?"
+];
