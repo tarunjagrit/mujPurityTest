@@ -22,7 +22,7 @@ const questions = [
   "Been completely undressed by someone?",
   "Had someone completely undress you?",
   "Undressed someone completely?",
-  "Told someone 'I love you' when you didn’t mean it?",
+  "Told someone 'I love you' when you didn't mean it?",
   "Lied to break a date?",
   "Had two dates on the same night with different people?",
   "Made out with two people on the same night?",
