@@ -19,31 +19,35 @@ let latestMessage = "";
 
 async function updateVisitorCount(){
 
-  const visitorCount =
-    document.getElementById("visitorCount");
-
-  const isLiveSite =
-    window.location.hostname === "tarunjagrit.github.io";
-
-  const alreadyCounted =
-    localStorage.getItem(VISITOR_KEY);
-
-  const apiUrl =
-    isLiveSite && !alreadyCounted
-      ? `${VISITOR_API}up`
-      : VISITOR_API;
-
   try{
 
+    const visitorCount =
+      document.getElementById("visitorCount");
+
+    const isLiveSite =
+      window.location.hostname === "tarunjagrit.github.io";
+
+    const alreadyCounted =
+      localStorage.getItem(VISITOR_KEY);
+
+    if(isLiveSite && !alreadyCounted){
+
+      await fetch(`${VISITOR_API}up`, {
+        mode: "no-cors",
+        cache: "no-store"
+      });
+
+      localStorage.setItem(VISITOR_KEY, "true");
+
+    }
+
     const response =
-      await fetch(apiUrl);
+      await fetch(`${VISITOR_API}?t=${Date.now()}`, {
+        cache: "no-store"
+      });
 
     const data =
       await response.json();
-
-    if(isLiveSite && !alreadyCounted){
-      localStorage.setItem(VISITOR_KEY, "true");
-    }
 
     visitorCount.innerText =
       data.value ?? data.count ?? "0";
@@ -94,7 +98,3 @@ document.addEventListener("change", (e) => {
       questionBox.classList.add("selected");
     }
     else{
-      questionBox.classList.remove("selected");
-    }
-
-  }
