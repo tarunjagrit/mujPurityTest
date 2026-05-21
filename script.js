@@ -257,7 +257,6 @@ ${shareUrl}`;
 });
 
 
-// Copy Score Link
 
 // Share Test
 
@@ -268,8 +267,7 @@ document.addEventListener("click", async (e) => {
     const text =
 `Think you are innocent? 😭
 
-Take the MUJ Purity Test:
-${SITE_URL}`;
+Take the MUJ Purity Test: ;
 
     if(navigator.share){
 
