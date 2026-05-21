@@ -17,12 +17,11 @@ let latestMessage = "";
 
 // Visitor Count
 
-async function updateVisitorCount(){
+async function updateVisitorCount() {
 
-  try{
+  const visitorCount = document.getElementById("visitorCount");
 
-    const visitorCount =
-      document.getElementById("visitorCount");
+  try {
 
     const isLiveSite =
       window.location.hostname === "tarunjagrit.github.io";
@@ -30,7 +29,7 @@ async function updateVisitorCount(){
     const alreadyCounted =
       localStorage.getItem(VISITOR_KEY);
 
-    if(isLiveSite && !alreadyCounted){
+    if (isLiveSite && !alreadyCounted) {
 
       await fetch(`${VISITOR_API}up`, {
         mode: "no-cors",
@@ -49,14 +48,20 @@ async function updateVisitorCount(){
     const data =
       await response.json();
 
-    visitorCount.innerText =
-      data.value ?? data.count ?? "0";
+    if (visitorCount) {
+      visitorCount.innerText =
+        data.value ?? data.count ?? "0";
+    }
 
   }
   catch(error){
 
-    visitorCount.innerText =
-      "Unavailable";
+    if (visitorCount) {
+      visitorCount.innerText =
+        "Unavailable";
+    }
+
+    console.error(error);
 
   }
 
@@ -176,8 +181,8 @@ function showResult(score, fromSharedLink = false){
       Share My Score Card
     </button>
 
-    <button id="copyLinkBtn">
-      Copy Score Link
+    <button id="shareTestBtn">
+      Share The Test
     </button>
 
     <button id="restartBtn">
@@ -198,19 +203,21 @@ function showResult(score, fromSharedLink = false){
 const submitBtn =
   document.getElementById("submitBtn");
 
-submitBtn.addEventListener("click", () => {
+if (submitBtn) {
+  submitBtn.addEventListener("click", () => {
 
-  const checkedBoxes =
-    document.querySelectorAll(
-      "input[type='checkbox']:checked"
-    );
+    const checkedBoxes =
+      document.querySelectorAll(
+        "input[type='checkbox']:checked"
+      );
 
-  let score =
-    Math.max(0, 50 - checkedBoxes.length);
+    let score =
+      Math.max(0, 50 - checkedBoxes.length);
 
-  showResult(score);
+    showResult(score);
 
-});
+  });
+}
 
 
 // Share Score Link
@@ -252,22 +259,42 @@ ${shareUrl}`;
 
 // Copy Score Link
 
+// Share Test
+
 document.addEventListener("click", async (e) => {
 
-  if(e.target.id === "copyLinkBtn"){
+  if(e.target.id === "shareTestBtn"){
 
-    const shareUrl =
-      getScoreLink(latestScore);
+    const text =
+`Think you are innocent? 😭
 
-    await navigator.clipboard.writeText(shareUrl);
+Take the MUJ Purity Test:
+${SITE_URL}`;
 
-    e.target.innerText =
-      "Link Copied!";
+    if(navigator.share){
 
-    setTimeout(() => {
+      await navigator.share({
+        title: "MUJ Purity Test",
+        text: text,
+        url: SITE_URL
+      });
+
+    }
+    else{
+
+      await navigator.clipboard.writeText(SITE_URL);
+
       e.target.innerText =
-        "Copy Score Link";
-    }, 1500);
+        "Test Link Copied!";
+
+      setTimeout(() => {
+
+        e.target.innerText =
+          "Share Test";
+
+      }, 1500);
+
+    }
 
   }
 
