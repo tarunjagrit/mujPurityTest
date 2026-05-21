@@ -267,14 +267,14 @@ document.addEventListener("click", async (e) => {
     const text =
 `Think you are innocent? 😭
 
-Take the MUJ Purity Test: ;
+Take the MUJ Purity Test:
+${SITE_URL}`;
 
     if(navigator.share){
 
       await navigator.share({
         title: "MUJ Purity Test",
-        text: text,
-        url: SITE_URL
+        text: text
       });
 
     }
