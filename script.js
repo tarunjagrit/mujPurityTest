@@ -127,7 +127,7 @@ function getScoreDetails(score){
     message = "A little chaotic, but manageable.";
   }
   else if(score >= 25){
-    title = "MUJ Survivor 💀";
+    title = " Officially MUJfied💀";
     message = "You’ve definitely lived some stories.";
   }
   else if(score >= 15){
